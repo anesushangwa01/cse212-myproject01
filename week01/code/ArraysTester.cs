@@ -39,7 +39,20 @@ public static class ArraysTester {
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return new double[0]; // replace this return statement with your own
+      {
+        // Step 1: l an array to hold the multiples.
+        double[] multiples = new double[length];
+        
+        // Step 2: Initialize a loop to populate the array.
+        for (int i = 0; i < length; i++)
+        {
+            // this code will calculate the multiple by multiplying the number by  i + 1
+            multiples[i] = number * (i + 1);
+        }
+        
+        // Step 3: Return the populated array.
+        return multiples;
+    }
     }
     
     /// <summary>
@@ -56,6 +69,25 @@ public static class ArraysTester {
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+       
+
+        // Calculate the effective amount of rotation using amount % n. 
+        // This handles cases where the rotation amount is larger than the list size.
+        int n = data.Count;
+        amount = amount % n;
+
+        // Step 2: Handle edge cases where no rotation is needed.
+        if (amount == 0) return;
+
+        // Step 3: Split the list into two parts.
+        List<int> rotatedPart = data.GetRange(n - amount, amount);  // Last 'amount' elements.
+        List<int> remainingPart = data.GetRange(0, n - amount);     // First 'n - amount' elements.
+
+        // Step 4: Reorder the list by concatenating the two parts.
+        data.Clear();
+        data.AddRange(rotatedPart);
+        data.AddRange(remainingPart);
+    }
 
     }
-}
+
