@@ -72,7 +72,7 @@ public static class ArraysTester {
        
 
         // Calculate the effective amount of rotation using amount % n. 
-        // This handles cases where the rotation amount is larger than the list size.
+        // This handles cases where the rotation amount is larger than the list size 
         int n = data.Count;
         amount = amount % n;
 
