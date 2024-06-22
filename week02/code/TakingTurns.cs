@@ -1,4 +1,5 @@
 ﻿public static class TakingTurns {
+
     public static void Test() {
         // TODO Problem 1 - Run test cases and fix the code to match requirements
         // Test Cases
@@ -15,6 +16,7 @@
         // Console.WriteLine(players);    // This can be un-commented out for debug help
         while (players.Length > 0)
             players.GetNextPerson();
+            
         // Defect(s) Found: 
 
         Console.WriteLine("---------");
