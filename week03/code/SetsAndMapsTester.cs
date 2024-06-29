@@ -25,6 +25,19 @@ public static class SetsAndMapsTester {
         // 32 & 23
         // 94 & 49
         // 31 & 13
+        
+        private static void DisplayPairs(string[] words) {
+    HashSet<string> wordSet = new HashSet<string>();
+
+    foreach (string word in words) {
+        string reversedWord = new string(word.Reverse().ToArray());
+        if (wordSet.Contains(reversedWord)) {
+            Console.WriteLine($"{word} & {reversedWord}");
+        }
+        wordSet.Add(word);
+    }
+}
+
 
         // Problem 2: Degree Summary
         // Sample Test Cases (may not be comprehensive) 
@@ -111,6 +124,15 @@ public static class SetsAndMapsTester {
         // To display the pair correctly use something like:
         // Console.WriteLine($"{word} & {pair}");
         // Each pair of words should displayed on its own line.
+          HashSet<string> wordSet = new HashSet<string>();
+
+    foreach (string word in words) {
+        string reversedWord = new string(word.Reverse().ToArray());
+        if (wordSet.Contains(reversedWord)) {
+            Console.WriteLine($"{word} & {reversedWord}");
+        }
+        wordSet.Add(word);
+    }
     }
 
     /// <summary>
@@ -132,6 +154,12 @@ public static class SetsAndMapsTester {
         foreach (var line in File.ReadLines(filename)) {
             var fields = line.Split(",");
             // Todo Problem 2 - ADD YOUR CODE HERE
+                var degree = fields[3].Trim();
+        if (degrees.ContainsKey(degree)) {
+            degrees[degree]++;
+        } else {
+            degrees[degree] = 1;
+        }
         }
 
         return degrees;
@@ -158,6 +186,17 @@ public static class SetsAndMapsTester {
     /// #############
     private static bool IsAnagram(string word1, string word2) {
         // Todo Problem 3 - ADD YOUR CODE HERE
+        var dict = new Dictionary<char, int>();
+
+    foreach (char c in word1.Replace(" ", "").ToLower()) {
+        if (dict.ContainsKey(c)) {
+            dict[c]++;
+        } else {
+            dict[c] = 1;
+        }
+        
+    }
+    
         return false;
     }
 
@@ -206,6 +245,75 @@ public static class SetsAndMapsTester {
         return map;
     }
 
+    public class Maze
+{
+    private Dictionary<(int, int), bool[]> _map;
+    private (int, int) _currentPosition;
+
+    public Maze(Dictionary<(int, int), bool[]> map)
+    {
+        _map = map;
+        _currentPosition = (1, 1); // Starting position
+    }
+
+    public void MoveUp()
+    {
+        if (_map[_currentPosition][0])
+        {
+            _currentPosition.Item1--;
+            Console.WriteLine("Moved up");
+        }
+        else
+        {
+            Console.WriteLine("Cannot move up");
+        }
+    }
+
+    public void MoveRight()
+    {
+        if (_map[_currentPosition][1])
+        {
+            _currentPosition.Item2++;
+            Console.WriteLine("Moved right");
+        }
+        else
+        {
+            Console.WriteLine("Cannot move right");
+        }
+    }
+
+    public void MoveDown()
+    {
+        if (_map[_currentPosition][2])
+        {
+            _currentPosition.Item1++;
+            Console.WriteLine("Moved down");
+        }
+        else
+        {
+            Console.WriteLine("Cannot move down");
+        }
+    }
+
+    public void MoveLeft()
+    {
+        if (_map[_currentPosition][3])
+        {
+            _currentPosition.Item2--;
+            Console.WriteLine("Moved left");
+        }
+        else
+        {
+            Console.WriteLine("Cannot move left");
+        }
+    }
+
+    public void ShowStatus()
+    {
+        Console.WriteLine($"Current position: ({_currentPosition.Item1}, {_currentPosition.Item2})");
+    }
+}
+
     /// <summary>
     /// This function will read JSON (Javascript Object Notation) data from the 
     /// United States Geological Service (USGS) consisting of earthquake data.
@@ -236,4 +344,5 @@ public static class SetsAndMapsTester {
         // on those classes so that the call to Deserialize above works properly.
         // 2. Add code below to print out each place a earthquake has happened today and its magitude.
     }
+    
 }
