@@ -25,18 +25,7 @@ public static class SetsAndMapsTester {
         // 32 & 23
         // 94 & 49
         // 31 & 13
-        
-        private static void DisplayPairs(string[] words) {
-    HashSet<string> wordSet = new HashSet<string>();
 
-    foreach (string word in words) {
-        string reversedWord = new string(word.Reverse().ToArray());
-        if (wordSet.Contains(reversedWord)) {
-            Console.WriteLine($"{word} & {reversedWord}");
-        }
-        wordSet.Add(word);
-    }
-}
 
 
         // Problem 2: Degree Summary
